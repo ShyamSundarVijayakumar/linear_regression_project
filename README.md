@@ -1,432 +1,198 @@
-📈 Linear Regression Project — Car MPG \& Diamond Price
+# 📈 Linear Regression Project — Car MPG & Diamond Price
 
+This repository demonstrates an end-to-end, beginner-friendly but thorough workflow for **linear regression** using two classic datasets:
 
+- **Auto MPG** — predict **miles-per-gallon (MPG)** from vehicle attributes  
+- **Diamonds** — predict **price** from diamond characteristics
 
-This repository demonstrates an end-to-end, beginner-friendly but thorough workflow for linear regression using two classic datasets:
+The notebook walks through **data loading → exploratory plots → feature selection → model training → evaluation → prediction**.  
+All exploratory scatter plots are pre-exported and stored in the **`assets/`** folder for use in reports or slides.
 
+---
 
+## 🎯 Objectives
 
-Auto MPG — predict miles-per-gallon (MPG) from vehicle attributes
+- Build **simple linear regression models** for tabular prediction tasks  
+- Practice **feature selection** and interpret exploratory plots  
+- Evaluate models with **R² score** and make point **predictions**  
+- Reuse plots (already exported to `assets/`) for presentations
 
+---
 
-
-Diamonds — predict price from diamond characteristics
-
-
-
-The notebook walks through data loading → exploratory plots → feature selection → model training → evaluation → prediction.
-
-All exploratory scatter plots are pre-exported and stored in the assets/ folder for use in reports or slides.
-
-
-
-
-
-🎯 Objectives
-
-
-
-Build simple linear regression models for tabular prediction tasks
-
-
-
-Practice feature selection and interpret exploratory plots
-
-
-
-Evaluate models with R² score and make point predictions
-
-
-
-Reuse plots (already exported to assets/) for presentations
-
-
-
-🗂 Datasets
-
-
+## 🗂 Datasets
 
 Loaded directly from IBM Skills Network public buckets (as used in the notebook):
 
+- **Auto MPG**  
+  `https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-BD0231EN-SkillsNetwork/datasets/mpg.csv`
 
+- **Diamonds**  
+  `https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-BD0231EN-SkillsNetwork/datasets/diamonds.csv`
 
-Auto MPG
+---
 
-https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-BD0231EN-SkillsNetwork/datasets/mpg.csv
+## 🔍 Exploratory Data Analysis (EDA)
 
+### A) Auto MPG — Relationships to MPG
 
+The notebook visualizes how **engine/vehicle attributes** relate to **MPG**:
 
-Diamonds
+- Horsepower vs MPG  
+  ![Horsepower vs MPG](assets/scatterplot_horsepower_vs_MPG.png)
 
-https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-BD0231EN-SkillsNetwork/datasets/diamonds.csv
+- Cylinders vs MPG  
+  ![Cylinders vs MPG](assets/scatterplot_cylinders_vs_MPG.png)
 
+- Engine Displacement vs MPG  
+  ![Engine Displacement vs MPG](assets/scatterplot_engine_disp_vs_MPG.png)
 
+- Weight vs MPG  
+  ![Weight vs MPG](assets/scatterplot_weight_vs_MPG.png)
 
-🔍 Exploratory Data Analysis (EDA)
+**Intuition from plots (typical patterns):**
+- Higher **horsepower**, **cylinders**, **displacement**, and **weight** generally correlate with **lower MPG**.
 
-A) Auto MPG — Relationships to MPG
+---
 
+### B) Diamonds — Relationships to Price
 
+The notebook explores how physical characteristics relate to **price**:
 
-The notebook visualizes how engine/vehicle attributes relate to MPG:
+- Carat vs Price  
+  ![Carat vs Price](assets/scatterplot_carat_vs_price.png)
 
+- “s” vs Price *(as used in the notebook’s column selection)*  
+  ![s vs Price](assets/scatterplot_s_vs_price.png)
 
+- Depth vs Price  
+  ![Depth vs Price](assets/scatterplot_depth_vs_price.png)
 
-Horsepower vs MPG
+- Table vs Price  
+  ![Table vs Price](assets/scatterplot_table_price.png)
 
+**Intuition from plots (typical patterns):**
+- **Carat** has a strong positive relationship with **price**.  
+- **Depth** and **table** often show weaker or more nuanced relationships.
 
+---
 
+## 🧠 Feature Sets & Targets
 
+### Auto MPG
+- **Target:** `MPG`  
+- **Features:** `Horsepower`, `Weight`
 
-Cylinders vs MPG
+### Diamonds
+- **Target:** `price`  
+- **Features:** `carat`, `depth`  *(as per the model in the notebook)*
 
+---
 
+## 🧪 Modeling & Evaluation
 
+Both tasks use **`sklearn.linear_model.LinearRegression`** trained on the full dataset (no split in the lab).  
+Evaluation uses the **R² score** (`model.score(X, y)`), where **higher is better**.
 
+### Results
 
-Engine Displacement vs MPG
+#### 1) Auto MPG — Linear Regression
+- **Model:** `MPG ~ Horsepower + Weight`  
+- **R² (on full data):** **0.7063752737298348**  
+- **Example prediction:**  
+  Input **Horsepower = 100**, **Weight = 2000** ⇒ **MPG ≈ 29.3216**
 
-
-
-
-
-Weight vs MPG
-
-
-
-
-
-Intuition from plots (typical patterns):
-
-
-
-Higher horsepower, cylinders, displacement, and weight generally correlate with lower MPG.
-
-
-
-B) Diamonds — Relationships to Price
-
-
-
-The notebook explores how physical characteristics relate to price:
-
-
-
-Carat vs Price
-
-
-
-
-
-“s” vs Price (as used in the notebook’s column selection)
-
-
-
-
-
-Depth vs Price
-
-
-
-
-
-Table vs Price
-
-
-
-
-
-Intuition from plots (typical patterns):
-
-
-
-Carat has a strong positive relationship with price.
-
-
-
-Depth and table often show weaker or more nuanced relationships.
-
-
-
-🧠 Feature Sets \& Targets
-
-Auto MPG
-
-
-
-Target: MPG
-
-
-
-Features: Horsepower, Weight
-
-
-
-Diamonds
-
-
-
-Target: price
-
-
-
-Features: carat, depth (as per the model in the notebook)
-
-
-
-🧪 Modeling \& Evaluation
-
-
-
-Both tasks use sklearn.linear\_model.LinearRegression trained on the full dataset (no split in the lab).
-
-Evaluation uses the R² score (model.score(X, y)), where higher is better.
-
-
-
-Results
-
-1\) Auto MPG — Linear Regression
-
-
-
-Model: MPG ~ Horsepower + Weight
-
-
-
-R² (on full data): 0.7063752737298348
-
-
-
-Example prediction:
-
-Input Horsepower = 100, Weight = 2000 ⇒ MPG ≈ 29.3216
-
-
-
-Interpretation:
-
+**Interpretation:**  
 A simple two-feature linear model captures a substantial share of variance in MPG (≈70%). Plots indicate the expected negative relationships between power/weight and fuel economy.
 
+---
 
+#### 2) Diamonds — Linear Regression
+- **Model:** `price ~ carat + depth`  
+- **R² (on full data):** **0.8506754571636563**  
+- **Example prediction:**  
+  Input **carat = 0.3**, **depth = 60** ⇒ **price ≈ 244.956**
 
-2\) Diamonds — Linear Regression
+**Interpretation:**  
+With just **carat** and **depth**, the model explains ~85% of price variance—**carat** is highly predictive; **depth** adds a smaller adjustment.
 
+---
 
+## 🧭 Step-by-Step (Notebook Flow)
 
-Model: price ~ carat + depth
+1. **Load data** via `pandas.read_csv` from the given URLs  
+2. **Visual EDA** with `DataFrame.plot.scatter` to inspect relationships  
+3. **Select features/target** per task  
+4. **Instantiate & fit** `LinearRegression()`  
+5. **Evaluate** with `model.score(X, y)` (R²)  
+6. **Predict** sample values to sanity-check the model
 
+---
 
+## 🛠️ Tech Stack
 
-R² (on full data): 0.8506754571636563
+- **Python 3.10+**, **Jupyter Notebook/Lab**  
+- **Libraries:** `pandas`, `numpy`, `matplotlib`, `scikit-learn`
 
-
-
-Example prediction:
-
-Input carat = 0.3, depth = 60 ⇒ price ≈ 244.956
-
-
-
-Interpretation:
-
-With just carat and depth, the model explains ~85% of price variance—carat is highly predictive; depth adds a smaller adjustment.
-
-
-
-🧭 Step-by-Step (Notebook Flow)
-
-
-
-Load data via pandas.read\_csv from the given URLs
-
-
-
-Visual EDA with DataFrame.plot.scatter to inspect relationships
-
-
-
-Select features/target per task
-
-
-
-Instantiate \& fit LinearRegression()
-
-
-
-Evaluate with model.score(X, y) (R²)
-
-
-
-Predict sample values to sanity-check the model
-
-
-
-🛠️ Tech Stack
-
-
-
-Python 3.10+, Jupyter Notebook/Lab
-
-
-
-Libraries: pandas, numpy, matplotlib, scikit-learn
-
-
+### Quick install
+```bash
+pip install pandas numpy matplotlib scikit-learn jupyterlab
 
 ▶️ How to Run
 
-\# 1) Clone
+# 1) Clone
+git clone https://github.com/<your-username>/linear_regression_project.git
+cd linear_regression_project
 
-git clone https://github.com/<your-username>/linear\_regression\_project.git
-
-cd linear\_regression\_project
-
-
-
-\# 2) (Optional) Create \& activate a venv
-
+# 2) (Optional) Create & activate a venv
 python -m venv venv
-
-\# Windows: .\\venv\\Scripts\\activate
-
-\# macOS/Linux:
-
+# Windows: .\venv\Scripts\activate
+# macOS/Linux:
 source venv/bin/activate
 
-
-
-\# 3) Install deps
-
+# 3) Install deps
 pip install -r requirements.txt
 
-
-
-\# 4) Launch
-
+# 4) Launch
 jupyter lab
+# Open "Building_and_training_a_model_using_Linear_Regression.ipynb" and run cells
+```
 
-\# Open "Building\_and\_training\_a\_model\_using\_Linear\_Regression.ipynb" and run cells
+## ✅ Key Takeaways
 
+- **Simple linear models can be strong baselines**:
+   - Auto MPG with only Horsepower and Weight already achieves R² ≈ 0.71.
+   - Diamonds with just carat and depth achieves R² ≈ 0.85.
+- EDA guides feature choices: Visual trends in scatter plots help prioritize variables.
+- Predictions are interpretable: The model outputs make intuitive sense when cross-checked with domain intuition.
 
+## 💡 Suggestions / Next Steps
 
-✅ Key Takeaways
+- **Train/Test Split or Cross-Validation**
+   - Evaluate generalization (e.g., train_test_split or KFold) and report test R².
 
+- **Residual Diagnostics**
+  - Plot residuals vs fitted, check normality of residuals, and look for heteroscedasticity.
 
+- **Add/Compare Models**
+ - Try Ridge/Lasso/ElasticNet (regularization), PolynomialFeatures, and tree-based models; compare metrics.
 
-Simple linear models can be strong baselines:
+- **Feature Engineering**
+  - For Auto MPG, include acceleration, model year, origin, or encoded categorical variables if available.
+  - For Diamonds, consider cut, color, clarity, or dimensions (x, y, z) if present.
 
+- **Scaling**
+  - Standardize features if you expand to models sensitive to scale.
 
+- **Persist Models**
+  - Export trained models with joblib and add a small CLI or notebook cell to load & predict.
 
-Auto MPG with only Horsepower and Weight already achieves R² ≈ 0.71.
+---
 
+## 👨‍💻 Author
+<div style="display: flex; align-items: center; gap: 20px"> <img src="https://avatars.githubusercontent.com/u/27292813?s=200" width="100" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2)"> <div> <strong>Shyam Sundar Vijayakumar</strong><br> Data Scientist | Programmer | AI Enthusiast </div> </div>
 
+---
 
-Diamonds with just carat and depth achieves R² ≈ 0.85.
-
-
-
-EDA guides feature choices: Visual trends in scatter plots help prioritize variables.
-
-
-
-Predictions are interpretable: The model outputs make intuitive sense when cross-checked with domain intuition.
-
-
-
-💡 Suggestions / Next Steps
-
-
-
-Train/Test Split or Cross-Validation
-
-Evaluate generalization (e.g., train\_test\_split or KFold) and report test R².
-
-
-
-Residual Diagnostics
-
-Plot residuals vs fitted, check normality of residuals, and look for heteroscedasticity.
-
-
-
-Add/Compare Models
-
-Try Ridge/Lasso/ElasticNet (regularization), PolynomialFeatures, and tree-based models; compare metrics.
-
-
-
-Feature Engineering
-
-For Auto MPG, include acceleration, model year, origin, or encoded categorical variables if available.
-
-For Diamonds, consider cut, color, clarity, or dimensions (x, y, z) if present.
-
-
-
-Scaling
-
-Standardize features if you expand to models sensitive to scale.
-
-
-
-Persist Models
-
-Export trained models with joblib and add a small CLI or notebook cell to load \& predict.
-
-
-
-👤 Author
-
-
-
-Shyam Sundar Vijayakumar
-
-
-
-📜 License
-
-
-
-MIT — feel free to use and adapt with attribution.
-
-
-
-📎 Notes on Assets
-
-
-
-All exploratory plots used in the notebook are provided in assets/ and referenced above:
-
-
-
-scatterplot\_horsepower\_vs\_MPG.png
-
-
-
-scatterplot\_cylinders\_vs\_MPG.png
-
-
-
-scatterplot\_engine\_disp\_vs\_MPG.png
-
-
-
-scatterplot\_weight\_vs\_MPG.png
-
-
-
-scatterplot\_carat\_vs\_price.png
-
-
-
-scatterplot\_s\_vs\_price.png
-
-
-
-scatterplot\_depth\_vs\_price.png
-
-
-
-scatterplot\_table\_price.png
-
+## 📜 License
+This project is licensed under the MIT License.
+Shared for educational and portfolio purposes. Attribution is appreciated.
