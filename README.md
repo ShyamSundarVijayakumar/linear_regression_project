@@ -1,4 +1,6 @@
-# 📈 Linear Regression Project — Car MPG & Diamond Price
+<div align="center">
+  <h1> 📈 Linear Regression Project — Car MPG & Diamond Price</h1>
+  </div>
 
 This repository demonstrates an end-to-end, beginner-friendly but thorough workflow for **linear regression** using two classic datasets:
 
@@ -8,6 +10,10 @@ This repository demonstrates an end-to-end, beginner-friendly but thorough workf
 The notebook walks through **data loading → exploratory plots → feature selection → model training → evaluation → prediction**.  
 All exploratory scatter plots are pre-exported and stored in the **`assets/`** folder for use in reports or slides.
 
+<div align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue" alt="License: MIT">
+</div>
+
 ---
 
 ## 🎯 Objectives
@@ -15,7 +21,7 @@ All exploratory scatter plots are pre-exported and stored in the **`assets/`** f
 - Build **simple linear regression models** for tabular prediction tasks  
 - Practice **feature selection** and interpret exploratory plots  
 - Evaluate models with **R² score** and make point **predictions**  
-- Reuse plots (already exported to `assets/`) for presentations
+- Reuse plots (already exported to `assets/`)
 
 ---
 
@@ -71,7 +77,7 @@ The notebook explores how physical characteristics relate to **price**:
   ![Table vs Price](assets/scatterplot_table_price.png)
 
 **Intuition from plots (typical patterns):**
-- **Carat** has a strong positive relationship with **price**.  
+- **Carat** vs **price** - strong positive correlation but also high variance (heteroscedasticity)
 - **Depth** and **table** often show weaker or more nuanced relationships.
 
 ---
@@ -140,7 +146,7 @@ pip install pandas numpy matplotlib scikit-learn jupyterlab
 ▶️ How to Run
 
 # 1) Clone
-git clone https://github.com/<your-username>/linear_regression_project.git
+git clone https://github.com/ShyamSundarVijayakumar/linear_regression_project.git
 cd linear_regression_project
 
 # 2) (Optional) Create & activate a venv
@@ -157,6 +163,8 @@ jupyter lab
 # Open "Building_and_training_a_model_using_Linear_Regression.ipynb" and run cells
 ```
 
+---
+
 ## ✅ Key Takeaways
 
 - **Simple linear models can be strong baselines**:
@@ -165,9 +173,11 @@ jupyter lab
 - EDA guides feature choices: Visual trends in scatter plots help prioritize variables.
 - Predictions are interpretable: The model outputs make intuitive sense when cross-checked with domain intuition.
 
+---
+
 ## 💡 Suggestions / Next Steps
 
-- **Train/Test Split or Cross-Validation**
+- **Train/Test Split or Cross-Validation**:
    - Evaluate generalization (e.g., train_test_split or KFold) and report test R².
 
 - **Residual Diagnostics**
@@ -176,20 +186,13 @@ jupyter lab
 - **Add/Compare Models**
  - Try Ridge/Lasso/ElasticNet (regularization), PolynomialFeatures, and tree-based models; compare metrics.
 
-- **Feature Engineering**
-  - For Auto MPG, include acceleration, model year, origin, or encoded categorical variables if available.
-  - For Diamonds, consider cut, color, clarity, or dimensions (x, y, z) if present.
-
 - **Scaling**
   - Standardize features if you expand to models sensitive to scale.
-
-- **Persist Models**
-  - Export trained models with joblib and add a small CLI or notebook cell to load & predict.
 
 ---
 
 ## 👨‍💻 Author
-<div style="display: flex; align-items: center; gap: 20px"> <img src="https://avatars.githubusercontent.com/u/27292813?s=200" width="100" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2)"> <div> <strong>Shyam Sundar Vijayakumar</strong><br> Data Scientist | Programmer | AI Enthusiast </div> </div>
+<div style="display: flex; align-items: center; gap: 20px"> <img src="https://avatars.githubusercontent.com/u/27292813?s=200" width="100" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2)"> <div> <strong>Shyam Sundar Vijayakumar</strong><br> Data Scientist | Optimization Specialist </div> </div>
 
 ---
 
